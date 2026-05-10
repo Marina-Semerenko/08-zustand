@@ -1,6 +1,6 @@
 import NoteForm from "@/components/NoteForm/NoteForm";
-import css from './CreateNote.module.css';
 import type { Metadata } from "next";
+import css from './CreateNote.module.css';
 
 export const metadata: Metadata = {
     title: 'Create Note',
@@ -11,20 +11,23 @@ export const metadata: Metadata = {
         url: 'https://notehub.app/notes/action/create',
         images: [
             {
-                url:
-        'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+        url:'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+                width: 1200,
+                height: 630, 
+                alt: 'Create New Note'
             }
         ],
     },
-};
+}
 
 export default function CreateNotePage() {
-    return (
-        <main className={css.main}>
-            <div className={css.container}>
-                <h1 className={css.title}>Create note</h1>
-                <NoteForm />
-            </div>
-        </main>
-    );
-}
+    {
+        return (
+            <main className={css.main}>
+                <div className={css.container}>
+                    <h1 className={css.title}>Create note</h1>
+                    <NoteForm />
+                </div>
+            </main>
+        )
+    }

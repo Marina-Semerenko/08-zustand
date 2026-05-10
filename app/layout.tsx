@@ -20,22 +20,30 @@ export const metadata: Metadata = {
     description: "Manage your notes easily with NoteHub",
     url: 'https://notehub.app',
     images: [
-      'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
-    ],
-  },
-};
+      {
+        url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+        width: 1200,
+        height: 620,
+        alt: 'noteHub'
+      },
+    ]
+  }
+}
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.variable}>
+      <body className={`${roboto.variable}`}>
         <TanStackProvider>
           <Header />
           {children}
+          {modal}
           <Footer />
         </TanStackProvider>
       </body>

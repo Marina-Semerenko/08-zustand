@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props):
 Promise<Metadata>  {
   const { slug } = await params;
   const tag = slug?.[0] || 'all';
-
+  const title = tag === 'all' ? 'All Notes' : `Notes tagged with "${tag}"`;
   return {
     title: `Notes - ${tag}`,
     description: `Viewing notes filtered by ${tag}`,
@@ -22,7 +22,11 @@ Promise<Metadata>  {
       description: `Viewing notes filtered by ${tag}`,
       url: `https://notehub.app/notes/filter/${tag}`,
       images: [
-        'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+        {url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+        width: 1200,
+        height: 650,
+        alt: title,
+    }
       ],
     },
   };
