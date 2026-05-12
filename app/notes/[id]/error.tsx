@@ -9,5 +9,5 @@ export default function Error({
         <p>
             Could not fetch note details. {error.message}
         </p>
-    )
+    );
 }

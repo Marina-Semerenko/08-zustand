@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     images: [
       {url:'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
         width: 1200,
-        height: 630,
+        height: 620,
       alt: 'Page not found',
       },]
   },
@@ -27,5 +27,5 @@ export default function NotFound () {
     Sorry, the page you are looking for does not exist.
     </p>
         </>
-    )
+    );
 }

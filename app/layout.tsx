@@ -23,19 +23,18 @@ export const metadata: Metadata = {
       {
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
         width: 1200,
-        height: 620,
+        height: 630,
         alt: 'noteHub'
       },
-    ]
-  }
-}
+    ],
+  },
+};
 
 export default function RootLayout({
   children,
-  modal,
 }: Readonly<{
   children: React.ReactNode;
-  modal: React.ReactNode
+ // modal: React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -43,7 +42,7 @@ export default function RootLayout({
         <TanStackProvider>
           <Header />
           {children}
-          {modal}
+          
           <Footer />
         </TanStackProvider>
       </body>

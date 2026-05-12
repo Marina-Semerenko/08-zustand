@@ -12,31 +12,42 @@ interface NotePreviewProps {
 
 export default function NotePreview({ id }: NotePreviewProps) {
     const router = useRouter();
-    const handleClose = () =>  router.back();
-    const { data, isLoading, isError } =
+    const { data, isLoading, error } =
         useQuery({
             queryKey: ['note', id],
-            queryFn: () => fetchNoteById(id),          
-    })      
-
+            queryFn: () => fetchNoteById(id),
+            refetchOnMount: false,
+});
+    const handleClose = () => {
+        router.back();
+    };   
+    
     return (
         <Modal onClose={handleClose}>
             <div className={css.container}>
-             <button className={css.backBtn} onClick={close}>Close</button>   
              {isLoading &&  <p>Loading, please wait...</p>}
-                {isError && <p>Error loading note.</p>}
-                    {data && (
+                {error || (!data && !isLoading) ? (
+                    <p>Something went wrong.</p>
+                ) : (
+                    data && (
                         <div className={css.item}>
                             <div className={css.header}>
-                            <h2>{data.title}</h2>
-                            </div>                               
+                                <h2>{data.title}</h2>
+                                <button
+                                    onClick={handleClose}
+                                    className={css.closeButton}
+                                    aria-label="Close"
+                                >
+                                    &times;
+                                </button>
+                            </div>
                             <p className={css.tag}>{data.tag}</p>
                             <p className={css.content}>{data.content}</p>
                             <p className={css.date}>{data.createdAt}</p>
-                        </div>                
-                   
-                    )}
-            </div>
+                        </div>
+                    )
+                )}
+                </div>
         </Modal>
-    )
+    );
     }
